@@ -6,8 +6,7 @@
 
 #Grabs the mac from all attached network cards
 
-import socket
-import psutil
+import socket,psutil
 import netifaces as ni
 from getmac import get_mac_address as gma
 
@@ -19,20 +18,20 @@ addrs = psutil.net_if_addrs()
 
 rawnics = (ni.interfaces())
 
-f = open(hostname, 'w+')
-
-#write hostname
-
-f.write("Hostname: " + hostname +'\n\n')
+#f = open(hostname, 'w+')
 
 #grab ip and mac from all adapters
 
 for i in rawnics:
-    ip = ni.ifaddresses(i)[ni.AF_INET][0]['addr']
-    f.write(i+': Ip: '+ip+'\n')
+    try:
+        ip = ni.ifaddresses(i)[2][0]['addr']
+    except KeyError:
+        ip = "Skipped (No IP Found)"
     mac_address = gma(interface=i)
-    f.write(i + ": Mac address: " + mac_address + '\n\n')
+    
+    #writes the hostname, ip(s) and mac address(s) to the text file
+    f.write("Hostname: " + hostname +'\n\n' + i + ': Ip: '+ip+'\n' + i + ": Mac address: " + mac_address + '\n\n')
 
-#write data
+#saves data and releases text file
 
-f.close()
+#f.close()
