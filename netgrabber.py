@@ -1,10 +1,10 @@
-#    _   _      _    ____           _     _               
+#    _   _      _    ____           _     _
 #   | \ | | ___| |_ / ___|_ __ __ _| |__ | |__   ___ _ __
 #   |  \| |/ _ \ __| |  _| '__/ _` | '_ \| '_ \ / _ \ '__|
 #   | |\  |  __/ |_| |_| | | | (_| | |_) | |_) |  __/ |
 #   |_| \_|\___|\__|\____|_|  \__,_|_.__/|_.__/ \___|_|
 
-#Grabs the mac and ip from all attached network cards
+#Grabs the mac from all attached network cards
 
 import socket
 import fcntl
