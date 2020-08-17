@@ -7,7 +7,6 @@
 #Grabs the mac from all attached network cards
 
 import socket
-import fcntl
 import psutil
 import netifaces as ni
 from getmac import get_mac_address as gma
