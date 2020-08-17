@@ -24,7 +24,7 @@ f = open(hostname, 'w+')
 
 #write hostname
 
-f.write("Hostname:" + hostname +'\n\n')
+f.write("Hostname: " + hostname +'\n\n')
 
 #grab ip and mac from all adapters
 
