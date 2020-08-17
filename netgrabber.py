@@ -18,7 +18,7 @@ addrs = psutil.net_if_addrs()
 
 rawnics = (ni.interfaces())
 
-#f = open(hostname, 'w+')
+f = open(hostname, 'w+')
 
 #grab ip and mac from all adapters
 
