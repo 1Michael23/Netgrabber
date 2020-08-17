@@ -38,3 +38,5 @@ for i in rawnics:
 #write data
 
 f.close()
+
+#nigger
