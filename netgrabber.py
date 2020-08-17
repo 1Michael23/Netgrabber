@@ -6,9 +6,9 @@
 
 #Grabs the mac from all attached network cards
 
-import socket,psutil
+import socket,psutil,os
 import netifaces as ni
-
+from getmac import get_mac_address as gma
 #define data
 
 hostname = socket.gethostname()
@@ -27,8 +27,10 @@ for i in rawnics:
    
     except KeyError:
         ip = "Skipped (No IP Found)"
-    mac_address = ni.ifaddresses(i)[-1000][0]['addr']
-    
+    if os.name == 'nt':
+        mac_address = ni.ifaddresses(i)[-1000][0]['addr']
+    elif os.name == 'posix':
+        mac_address = gma(interface=i)
     #writes the hostname, ip(s) and mac address(s) to the text file
     f.write("Hostname: " + str(hostname) +'\n\n' + i + ': Ip: '+str(ip)+'\n' + i + ": Mac address: " + str(mac_address) + '\n\n')
 
