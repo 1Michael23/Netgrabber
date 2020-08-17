@@ -8,7 +8,6 @@
 
 import socket,psutil
 import netifaces as ni
-from getmac import get_mac_address as gma
 
 #define data
 
@@ -25,13 +24,14 @@ f = open(hostname, 'w+')
 for i in rawnics:
     try:
         ip = ni.ifaddresses(i)[2][0]['addr']
+   
     except KeyError:
         ip = "Skipped (No IP Found)"
-    mac_address = gma(interface=i)
+    mac_address = ni.ifaddresses(i)[-1000][0]['addr']
     
     #writes the hostname, ip(s) and mac address(s) to the text file
-    f.write("Hostname: " + hostname +'\n\n' + i + ': Ip: '+ip+'\n' + i + ": Mac address: " + mac_address + '\n\n')
+    f.write("Hostname: " + str(hostname) +'\n\n' + i + ': Ip: '+str(ip)+'\n' + i + ": Mac address: " + str(mac_address) + '\n\n')
 
 #saves data and releases text file
 
-#f.close()
+f.close()
