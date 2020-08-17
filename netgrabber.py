@@ -29,7 +29,6 @@ f.write("Hostname: " + hostname +'\n\n')
 #grab ip and mac from all adapters
 
 for i in rawnics:
-    ni.ifaddresses(i)
     ip = ni.ifaddresses(i)[ni.AF_INET][0]['addr']
     f.write(i+': Ip: '+ip+'\n')
     mac_address = gma(interface=i)
