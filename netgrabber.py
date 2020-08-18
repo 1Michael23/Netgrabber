@@ -5,6 +5,7 @@
 #   |_| \_|\___|\__|\____|_|  \__,_|_.__/|_.__/ \___|_|
 
 #Grabs the mac from all attached network cards
+# e
 
 import socket,psutil,os
 import netifaces as ni
@@ -24,7 +25,7 @@ f = open(hostname, 'w+')
 for i in rawnics:
     try:
         ip = ni.ifaddresses(i)[2][0]['addr']
-   
+
     except KeyError:
         ip = "Skipped (No IP Found)"
     if os.name == 'nt':
