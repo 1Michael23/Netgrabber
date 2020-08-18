@@ -5,7 +5,6 @@
 #   |_| \_|\___|\__|\____|_|  \__,_|_.__/|_.__/ \___|_|
 
 #Grabs the mac from all attached network cards
-# e
 
 import socket,psutil,os
 import netifaces as ni
@@ -20,6 +19,8 @@ rawnics = (ni.interfaces())
 
 f = open(hostname, 'w+')
 
+f.write("Hostname: " + str(hostname) + '\n\n')
+
 #grab ip and mac from all adapters
 
 for i in rawnics:
@@ -33,7 +34,7 @@ for i in rawnics:
     elif os.name == 'posix':
         mac_address = gma(interface=i)
     #writes the hostname, ip(s) and mac address(s) to the text file
-    f.write("Hostname: " + str(hostname) +'\n\n' + i + ': Ip: '+str(ip)+'\n' + i + ": Mac address: " + str(mac_address) + '\n\n')
+    f.write(i + ': Ip: '+str(ip)+'\n' + i + ": Mac address: " + str(mac_address) + '\n\n')
 
 #saves data and releases text file
 
