@@ -17,7 +17,7 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 
 Upload_method = 'discord'
 
-hook = 'https://discordapp.com/api/webhooks/745098847881265303/QJRM5MbF7fHAuidNelyK4HsJUveTDhusqqt8OjvKMyFxjw17kJoq7x9VLzvSBHdGNzLz'
+hook = ''
 
 #define data
 
