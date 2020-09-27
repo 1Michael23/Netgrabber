@@ -1,4 +1,5 @@
 # Netgrabber
-Logs network data with python
+Logs data about network hardware such as MAC Address and local IP
 
-The first somewhat useful thing i have made with python.
+Can upload data to discord webhook or be configured for other recovery methods
+
